@@ -11,7 +11,9 @@
       url = "github:edolstra/flake-compat";
       flake = false;
     };
+  
     systems.url = "github:nix-systems/default";
+    
   };
 
   outputs = inputs @ { self, flake-parts, systems, ... }: flake-parts.lib.mkFlake { inherit inputs; } {
@@ -32,7 +34,6 @@
           pkgs.gh
           pkgs.sqlite
           pkgs.gnumake
-          pkgs.php-cs-fixer
         ];
 
         packages = builtins.foldl'
@@ -59,7 +60,7 @@
                 name = "php${pkgs.lib.versions.major php.version}${pkgs.lib.versions.minor php.version}";
               in
               {
-                "${name}" = pkgs.mkShellNoCC { name = "${name}"; buildInputs = [ php php.packages.composer pkgs.php-cs-fixer ]; };
+                "${name}" = pkgs.mkShellNoCC { name = "${name}"; buildInputs = [ php php.packages.composer ]; };
                 "env-${name}" = self'.devShells."${name}".overrideAttrs (oldAttrs: { buildInputs = oldAttrs.buildInputs ++ envPackages; });
               } // carry
           )
