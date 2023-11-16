@@ -59,7 +59,7 @@
                 name = "php${pkgs.lib.versions.major php.version}${pkgs.lib.versions.minor php.version}";
               in
               {
-                "${name}" = pkgs.mkShellNoCC { name = "${name}"; buildInputs = [ php php.packages.composer ]; };
+                "${name}" = pkgs.mkShellNoCC { name = "${name}"; buildInputs = [ php php.packages.composer pkgs.php-cs-fixer ]; };
                 "env-${name}" = self'.devShells."${name}".overrideAttrs (oldAttrs: { buildInputs = oldAttrs.buildInputs ++ envPackages; });
               } // carry
           )
