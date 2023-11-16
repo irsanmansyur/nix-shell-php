@@ -32,6 +32,7 @@
           pkgs.gh
           pkgs.sqlite
           pkgs.gnumake
+          pkgs.php-cs-fixer
         ];
 
         packages = builtins.foldl'
