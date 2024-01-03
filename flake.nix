@@ -5,11 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-phps.url = "github:fossar/nix-phps";
     nix-php-composer-builder.url = "github:loophp/nix-php-composer-builder";
-    nix-mongodb-php = {
-      url = "github:derhasi/nix-mongodb-php";
-      # specify a specific revision or commit if needed
-    };
-
 
     # Shim to make flake.nix work with stable Nix.
     flake-compat = {
