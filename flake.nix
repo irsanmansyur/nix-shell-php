@@ -36,6 +36,7 @@
           pkgs.sqlite
           pkgs.gnumake
           pkgs.phpPackages.mongodb
+
         ];
 
         packages = builtins.foldl'
