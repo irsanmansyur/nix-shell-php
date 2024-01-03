@@ -35,8 +35,6 @@
           pkgs.gh
           pkgs.sqlite
           pkgs.gnumake
-          pkgs.phpPackages.mongodb
-
         ];
 
         packages = builtins.foldl'
@@ -85,9 +83,7 @@
 
         formatter = pkgs.nixpkgs-fmt;
 
-        overlayAttrs = packages ++ {
-          "mongodb" = pkgs.phpPackages.mongodb;
-        };
+        overlayAttrs = packages;
 
 
         inherit packages devShells;
